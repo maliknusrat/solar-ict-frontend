@@ -3,9 +3,9 @@ import React from "react";
 export default function Discover() {
   return (
     <div className="max-h-[220px] my-auto text-[#101835] rounded-lg bg-[linear-gradient(90deg,#FFFFFF_0%,#DDE4FF_100%)] w-full">
-      <div className="flex flex-col md:flex-row gap-5 items-center justify-between max-w-6xl px-1 md:px-0 mx-auto py-10">
+      <div className="flex flex-col md:flex-row gap-5 items-center justify-between max-w-6xl px-3 md:px-0 mx-auto py-10">
         <div className="w-full md:w-[500px] space-y-2">
-          <p className="text-3xl md:text-3xl font-bold">
+          <p className="text-xl md:text-3xl font-bold">
             Discover new opportunities for your business.
           </p>
           

@@ -6,13 +6,19 @@ import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
 import { usePathname } from "next/navigation";
 import { CiGlobe } from "react-icons/ci";
+import { useState } from "react";
+import { BiChevronDown } from "react-icons/bi";
+import ServiceDropdown from "./ServiceDropdown";
 
 export default function Navbar() {
   const pathname = usePathname(); // 👈 current route
+  const [open, setOpen] = useState(false);
 
   return (
     <div>
-      <TopContact></TopContact>
+      <div className="hidden md:block">
+        <TopContact></TopContact>
+      </div>
       <nav className="max-w-6xl mx-auto flex justify-between items-center px-8 py-4 bg-white/10 text-white">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -41,9 +47,9 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/about"
+                href="/about-us"
                 className={`transition ${
-                  pathname === "/about"
+                  pathname === "/about-us"
                     ? "text-pink-500"
                     : "hover:text-pink-500"
                 }`}
@@ -51,18 +57,34 @@ export default function Navbar() {
                 About Us
               </Link>
             </li>
-            <li>
-              <Link
-                href="/services"
-                className={`transition ${
-                  pathname === "/services"
+            <li
+        className="relative"
+        onMouseLeave={() => setOpen(false)} // close when cursor leaves
+      >
+        <div className="flex items-center gap-1 cursor-pointer">
+          <Link
+            href="/our-service"
+            className={`transition ${
+              pathname === "/about-us"
                     ? "text-pink-500"
-                    : "hover:text-pink-500"
-                }`}
-              >
-                Our Services
-              </Link>
-            </li>
+                    : "hover:text-pink-500",
+              open ? "text-pink-500" : "hover:text-pink-500"
+            }`}
+          >
+            Our Services
+          </Link>
+          <BiChevronDown
+            className="w-4 h-4 cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+
+        {/* Dropdown */}
+        {open && (
+         <ServiceDropdown></ServiceDropdown>
+        )}
+      </li>
+    
             <li>
               <Link
                 href="/contact"

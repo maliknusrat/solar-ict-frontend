@@ -4,7 +4,7 @@ export default function Banner() {
   return (
     <div className="max-w-6xl mx-auto min-h-screen text-white">
       {/* Hero Section */}
-      <section className="container mx-auto py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="container px-10 md:px-0 mx-auto py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
           <h1 className="text-2xl md:text-4xl font-bold leading-tight">

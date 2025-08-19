@@ -18,10 +18,10 @@ export default function Serve() {
         </p>
 
         {/* Steps */}
-        <div className="relative flex items-center justify-between w-full max-w-4xl mx-auto">
+        <div className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
           {/* SVG Connector Line */}
           <svg
-            className="absolute top-1/2 left-0 w-full h-32 -translate-y-1/2"
+            className="hidden md:block absolute top-1/2 left-0 w-full h-32 -translate-y-1/2"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -33,7 +33,7 @@ export default function Serve() {
               strokeDasharray="12 12"
             />
           </svg>
-
+         
           {/* Step 1 */}
           <div className="relative z-10 flex flex-col items-center">
             <div className="flex flex-col items-center">

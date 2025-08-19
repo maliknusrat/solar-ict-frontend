@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Newsletter() {
   return (
-    <div className="max-h-[220px] my-auto text-white rounded-lg bg-white/10 w-full">
-      <div className="flex flex-col md:flex-row gap-5 items-center justify-between max-w-6xl px-1 md:px-0 mx-auto py-10">
+    <div className="max-h-[220px] my-auto text-white rounded-lg bg-[#FFFFFF1A] w-full">
+      <div className="flex flex-col  md:flex-row gap-5 items-start md:items-center justify-between max-w-6xl px-5 md:px-0 mx-auto py-10">
         <div className="w-full md:w-[500px] space-y-2">
           <p className="text-3xl md:text-3xl font-bold">
            Subscribe To Our Newsletter!
