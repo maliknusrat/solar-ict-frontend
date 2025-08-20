@@ -29,9 +29,9 @@ export default function Banner() {
           <Image
             src="/Banner 1.png"
             alt="Tech Illustration"
-            width={400}
+            width={600}
             height={400}
-            className="w-[400px] h-auto"
+            className="w-[800px] h-auto"
           />
         </div>
       </section>

@@ -3,23 +3,25 @@
 import Link from "next/link";
 import TopContact from "./TopContact";
 import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
+import { CiSearch, CiGlobe } from "react-icons/ci";
+import { BiChevronDown, BiMenu, BiX } from "react-icons/bi";
 import { usePathname } from "next/navigation";
-import { CiGlobe } from "react-icons/ci";
 import { useState } from "react";
-import { BiChevronDown } from "react-icons/bi";
 import ServiceDropdown from "./ServiceDropdown";
 
 export default function Navbar() {
-  const pathname = usePathname(); // 👈 current route
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false); // services dropdown
+  const [mobileMenu, setMobileMenu] = useState(false); // mobile menu
 
   return (
     <div>
-      <div className="hidden md:block">
-        <TopContact></TopContact>
+      {/* Top Contact (desktop only) */}
+      <div>
+        <TopContact />
       </div>
-      <nav className="max-w-6xl mx-auto flex justify-between items-center px-8 py-4 bg-white/10 text-white">
+
+      <nav className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4 bg-white/10 text-white">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Image
@@ -31,10 +33,9 @@ export default function Navbar() {
           <span className="font-thin text-lg">SOLAR-ICT</span>
         </div>
 
-        {/* Right icons */}
-        <div className="flex space-x-4">
-          {/* Menu */}
-          <ul className="hidden md:flex space-x-8">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6 items-center">
+          <ul className="flex space-x-8">
             <li>
               <Link
                 href="/"
@@ -58,33 +59,31 @@ export default function Navbar() {
               </Link>
             </li>
             <li
-        className="relative"
-        onMouseLeave={() => setOpen(false)} // close when cursor leaves
-      >
-        <div className="flex items-center gap-1 cursor-pointer">
-          <Link
-            href="/our-service"
-            className={`transition ${
-              pathname === "/about-us"
-                    ? "text-pink-500"
-                    : "hover:text-pink-500",
-              open ? "text-pink-500" : "hover:text-pink-500"
-            }`}
-          >
-            Our Services
-          </Link>
-          <BiChevronDown
-            className="w-4 h-4 cursor-pointer"
-            onClick={() => setOpen(!open)}
-          />
-        </div>
+  className="relative"
+  onMouseLeave={() => setOpen(false)}
+>
+  <div className="flex items-center gap-1 cursor-pointer">
+    <Link
+      href="/our-service"
+      className={`transition ${
+        pathname === "/our-service" || open
+          ? "text-pink-500"
+          : "hover:text-pink-500"
+      }`}
+    >
+      Our Services
+    </Link>
+    <BiChevronDown
+      className="w-4 h-4 cursor-pointer"
+      onClick={() => setOpen(!open)}
+    />
+  </div>
 
-        {/* Dropdown */}
-        {open && (
-         <ServiceDropdown></ServiceDropdown>
-        )}
-      </li>
-    
+  {/* Dropdown */}
+  {open && <ServiceDropdown />}
+</li>
+
+            
             <li>
               <Link
                 href="/contact"
@@ -99,14 +98,85 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <button className="hover:text-pink-500 text-3xl mx-5">
+          {/* Right icons */}
+          <button className="hover:text-pink-500 text-2xl">
             <CiSearch />
           </button>
-          <button className="hover:text-pink-500 text-3xl ">
-          <CiGlobe/>
+          <button className="hover:text-pink-500 text-2xl">
+            <CiGlobe />
           </button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          {mobileMenu ? (
+            <BiX
+              className="text-3xl cursor-pointer"
+              onClick={() => setMobileMenu(false)}
+            />
+          ) : (
+            <BiMenu
+              className="text-3xl cursor-pointer"
+              onClick={() => setMobileMenu(true)}
+            />
+          )}
+        </div>
       </nav>
+
+      {/* Mobile Menu Drawer */}
+      {mobileMenu && (
+        <div className="md:hidden bg-[#03091D] text-slate-100 px-6 py-6 space-y-4 absolute top-0 left-0 w-full h-[500px] z-50 overflow-y-auto">
+          {/* Close Btn + Logo */}
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center space-x-2">
+              <Image
+                src="/Hosting Logo 1 1.png"
+                alt="Logo"
+                width={40}
+                height={32}
+              />
+              <span className="font-thin text-lg">SOLAR-ICT</span>
+            </div>
+            <BiX
+              className="text-3xl cursor-pointer"
+              onClick={() => setMobileMenu(false)}
+            />
+          </div>
+
+          <ul className="space-y-4 text-lg font-medium">
+            <li>
+              <Link href="/" onClick={() => setMobileMenu(false)}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/about-us" onClick={() => setMobileMenu(false)}>
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/our-service" onClick={() => setMobileMenu(false)}>
+                Our Services
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" onClick={() => setMobileMenu(false)}>
+                Contact Us
+              </Link>
+            </li>
+          </ul>
+
+          {/* Right icons */}
+          <div className="flex gap-4 mt-6">
+            <button className="hover:text-pink-500 text-2xl">
+              <CiSearch />
+            </button>
+            <button className="hover:text-pink-500 text-2xl">
+              <CiGlobe />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

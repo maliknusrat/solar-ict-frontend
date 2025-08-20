@@ -41,7 +41,7 @@ export default function Serve() {
                 <FaRegCircleUser />
               </div>
               <div>
-                <p className="w-[180px] text-sm text-center mt-8">
+                <p className="w-[180px] text-gray-700 text-sm text-center mt-8">
                   Seamless IT Resource Integration
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function Serve() {
                 <AiOutlineCheck />
               </div>
             </div>
-            <p className="w-[180px] text-sm text-center mt-8 ">
+            <p className="w-[180px] text-gray-700 text-sm text-center mt-8 ">
               Cloud and Infrastructure Management
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function Serve() {
                 <IoGlobeOutline />
               </div>
             </div>
-            <p className="w-[180px] text-sm text-center mt-8 ">
+            <p className="w-[180px] text-gray-700 text-sm text-center mt-8 ">
               Business-Focused IT Support Solutions
             </p>
           </div>
