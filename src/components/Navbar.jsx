@@ -6,7 +6,7 @@ import Image from "next/image";
 import { CiSearch, CiGlobe } from "react-icons/ci";
 import { BiChevronDown, BiMenu, BiX } from "react-icons/bi";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ServiceDropdown from "./ServiceDropdown";
 
 export default function Navbar() {
@@ -14,14 +14,36 @@ export default function Navbar() {
   const [open, setOpen] = useState(false); // services dropdown
   const [mobileMenu, setMobileMenu] = useState(false); // mobile menu
 
+  // Close modal with delay on mouse leave
+  useEffect(() => {
+    let timer;
+    if (open) {
+      const handleClickOutside = (event) => {
+        if (!event.target.closest(".modal-container")) {
+          setOpen(false);
+        }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    } else {
+      clearTimeout(timer);
+    }
+    return () => clearTimeout(timer);
+  }, [open]);
+
+  const handleMouseLeave = () => {
+    const timer = setTimeout(() => setOpen(false), 4000); // 200ms delay
+    return () => clearTimeout(timer);
+  };
+
   return (
     <div>
-      {/* Top Contact (desktop only) */}
       <div>
         <TopContact />
       </div>
 
-      <nav className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4 bg-white/10 text-white">
+      <nav className=" max-w-6xl mx-auto flex justify-between items-center px-6 py-4 bg-white/10 text-white">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Image
@@ -58,37 +80,34 @@ export default function Navbar() {
                 About Us
               </Link>
             </li>
-            <li
-  className="relative"
-  onMouseLeave={() => setOpen(false)}
->
-  <div className="flex items-center gap-1 cursor-pointer">
-    <Link
-      href="/our-service"
-      className={`transition ${
-        pathname === "/our-service" || open
-          ? "text-pink-500"
-          : "hover:text-pink-500"
-      }`}
-    >
-      Our Services
-    </Link>
-    <BiChevronDown
-      className="w-4 h-4 cursor-pointer"
-      onClick={() => setOpen(!open)}
-    />
-  </div>
-
-  {/* Dropdown */}
-  {open && <ServiceDropdown />}
-</li>
-
-            
+            <li className="relative modal-container">
+              <div className="flex items-center gap-1 cursor-pointer">
+                <Link
+                  href="/our-service"
+                  className={`transition ${
+                    pathname === "/our-service" || open
+                      ? "text-pink-500"
+                      : "hover:text-pink-500"
+                  }`}
+                >
+                  Our Services
+                </Link>
+                <BiChevronDown
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={handleMouseLeave}
+                  className={` text-xl transition ${
+                    open ? "text-pink-500" : "text-gray-500"  
+                  }`}
+                  onClick={() => setOpen(!open)}
+                />
+              </div>
+              {open && <ServiceDropdown />}
+            </li>
             <li>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className={`transition ${
-                  pathname === "/contact"
+                  pathname === "/contact-us"
                     ? "text-pink-500"
                     : "hover:text-pink-500"
                 }`}
@@ -160,7 +179,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/contact" onClick={() => setMobileMenu(false)}>
+              <Link href="/contact-us" onClick={() => setMobileMenu(false)}>
                 Contact Us
               </Link>
             </li>

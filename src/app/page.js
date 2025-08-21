@@ -4,6 +4,8 @@ import Newsletter from "@/components/Newsletter";
 import Portfolio from "@/components/Protfolio";
 import Serve from "@/components/Serve";
 import Serviecs from "@/components/Serviecs";
+import TechnologyList from "@/components/TechnologyList";
+import TrustedCustomer from "@/components/TrustedCustomer";
 import WeServe from "@/components/WeServe";
 
 
@@ -15,7 +17,9 @@ export default function Home() {
       <Serviecs></Serviecs>
       <Serve></Serve>
       <WeServe></WeServe>
+      <TechnologyList></TechnologyList>
       <Portfolio></Portfolio>  
+      <TrustedCustomer></TrustedCustomer>
    </div>
   );
 }
