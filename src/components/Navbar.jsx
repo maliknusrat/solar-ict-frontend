@@ -33,7 +33,7 @@ export default function Navbar() {
   }, [open]);
 
   const handleMouseLeave = () => {
-    const timer = setTimeout(() => setOpen(false), 4000); // 200ms delay
+    const timer = setTimeout(() => setOpen(false), 100); // 200ms delay
     return () => clearTimeout(timer);
   };
 
@@ -43,8 +43,10 @@ export default function Navbar() {
         <TopContact />
       </div>
 
-      <nav className=" max-w-6xl mx-auto flex justify-between items-center px-6 py-4 bg-white/10 text-white">
+      <nav onMouseLeave={handleMouseLeave}
+       className=" max-w-6xl mx-auto flex justify-between items-center px-6 py-4 bg-white/10 text-white">
         {/* Logo */}
+
         <div className="flex items-center space-x-2">
           <Image
             src="/Hosting Logo 1 1.png"
@@ -94,7 +96,6 @@ export default function Navbar() {
                 </Link>
                 <BiChevronDown
                   onMouseEnter={() => setOpen(true)}
-                  onMouseLeave={handleMouseLeave}
                   className={` text-xl transition ${
                     open ? "text-pink-500" : "text-gray-500"  
                   }`}
