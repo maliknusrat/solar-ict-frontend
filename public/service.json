@@ -18,7 +18,7 @@
                         },
                         {
                             "heading": "Comprehensive Email Hosting Solutions for Businesses",
-                            "content": "Our email services provide robust email hosting, allowing businesses to set up custom email addresses using their domain, ensuring a professional appearance. We understand that every organization is unique, so we offer scalable solutions that can be tailored to your company’s specific needs. Whether you’re a small startup or a large enterprise, our platform ensures smooth, secure, and reliable email operations."
+                            "description": "Our email services provide robust email hosting, allowing businesses to set up custom email addresses using their domain, ensuring a professional appearance. We understand that every organization is unique, so we offer scalable solutions that can be tailored to your company’s specific needs. Whether you’re a small startup or a large enterprise, our platform ensures smooth, secure, and reliable email operations."
                         }
                     ],
                     "sections": [
@@ -212,11 +212,11 @@
                         },
                         {
                             "heading": "LAN/WAN Solutions",
-                            "content": "Robust wired and wireless networks designed to support large-scale enterprises with high availability and low latency."
+                            "description": "Robust wired and wireless networks designed to support large-scale enterprises with high availability and low latency."
                         },
                         {
                             "heading": "SD-WAN",
-                            "content": "Software-defined WAN solutions offer flexible, cost-efficient, and secure connectivity for modern businesses, enabling centralized management and optimized performance."
+                            "description": "Software-defined WAN solutions offer flexible, cost-efficient, and secure connectivity for modern businesses, enabling centralized management and optimized performance."
                         }
                     ],
                     "sections": [
@@ -249,11 +249,11 @@
                         },
                         {
                             "heading": "Firewall Deployment",
-                            "content": "Next-generation firewalls provide intrusion prevention, traffic monitoring, and protection against malicious activity."
+                            "description": "Next-generation firewalls provide intrusion prevention, traffic monitoring, and protection against malicious activity."
                         },
                         {
                             "heading": "Zero Trust Security",
-                            "content": "Identity-based access control ensures that only authorized users can access sensitive resources, reducing risk and strengthening security posture."
+                            "description": "Identity-based access control ensures that only authorized users can access sensitive resources, reducing risk and strengthening security posture."
                         }
                     ],
                     "sections": [

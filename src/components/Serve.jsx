@@ -2,6 +2,7 @@ import React from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AiOutlineCheck } from "react-icons/ai";
 import { IoGlobeOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 export default function Serve() {
   return (
@@ -21,18 +22,26 @@ export default function Serve() {
         <div className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
           {/* SVG Connector Line */}
           <svg
-            className="hidden md:block absolute top-1/2 left-0 w-full h-32 -translate-y-1/2"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M100,50 C500,-80 450,140 800,60 "
-              stroke="#A31FA9"
-              strokeWidth="2"
-              strokeDasharray="12 12"
-            />
-          </svg>
+      className="hidden md:block absolute top-1/2 left-0 w-full h-32 -translate-y-1/2"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <motion.path
+        d="M100,50 C500,-80 450,140 800,60"
+        stroke="#A31FA9"
+        strokeWidth="2"
+        strokeDasharray="12 12"
+        initial={{ strokeDashoffset: 1000 }}
+        animate={{ strokeDashoffset: 0 }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      />
+    </svg>
          
           {/* Step 1 */}
           <div className="relative z-10 flex flex-col items-center">
