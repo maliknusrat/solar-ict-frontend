@@ -15,32 +15,39 @@ const sectionVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Array of sections with an "animate" flag
 const sections = [
-  Banner,
-  Discover,
-  Serviecs,
-  Serve,
-  WeServe,
-  TechnologyList,
-  Portfolio,
-  TrustedCustomer,
+  { Component: Banner, animate: true },
+  { Component: Discover, animate: false },
+  { Component: Serviecs, animate: true },
+  { Component: Serve, animate: true },
+  { Component: WeServe, animate: true },
+  { Component: TechnologyList, animate: false },
+  { Component: Portfolio, animate: true },
+  { Component: TrustedCustomer, animate: false },
 ];
 
 export default function Home() {
   return (
     <div>
-      {sections.map((Section, index) => (
-        <motion.div
-          key={index}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }} // 🔹 triggers every scroll
-          transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.1 }}
-        >
-          <Section />
-        </motion.div>
-      ))}
+      {sections.map(({ Component, animate }, index) =>
+        animate ? (
+          <motion.div
+            key={index}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.1, ease: "easeOut", delay: index * 0.1 }}
+          >
+            <Component />
+          </motion.div>
+        ) : (
+          <div key={index}>
+            <Component />
+          </div>
+        )
+      )}
     </div>
   );
 }

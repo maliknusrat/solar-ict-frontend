@@ -12,7 +12,7 @@ import { MdSecurity } from "react-icons/md";
 
 export default function ServiceDropdown() {
   return (
-    <div className="fixed left-0 mt-1 bg-white p-6 w-full max-w-screen h-[90vh] overflow-y-auto z[100]">
+    <div className="fixed left-0 mt-1 bg-white p-6 w-full max-w-screen h-[90vh] overflow-y-auto z-[9999]">
       {/* <div className=""> */}
       <div className="max-w-7xl mx-auto grid grid-cols-3 place-items-start gap-8 px-8 pt-5 pb-10 text-gray-600">
         {/* Column 1 */}
